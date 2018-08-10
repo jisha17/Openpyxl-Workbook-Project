@@ -1,0 +1,14 @@
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
+
+wb=Workbook()                            #to create workbook
+file_name="SchoolDirectory.xlsx"         #Name of the workbook(name of excel sheet)  
+
+ws1=wb.active
+ws1.title="Class-I"                      #Giving name to 1st sheet(default sheet)
+ws2=wb.create_sheet(title="Class-II")    #Creating 2nd sheet with name given
+ws3=wb.create_sheet(title="Class-III")   #Creating 3rd sheet with name given
+
+print("sheetnames are:",wb.sheetnames)   #to get sheet names in a workbook
+ 
+wb.save(file_name)                       #To save the workbook
