@@ -1,0 +1,194 @@
+import openpyxl                                      #Import openpyxl
+from openpyxl.styles import PatternFill              #Import PatternFill from openpyxl
+from openpyxl.styles.borders import Border, Side     #Import Border and side from openpyxl
+from openpyxl.styles import Alignment                #Import Alignmnet from openpyxl
+
+wb=openpyxl.load_workbook('SchoolDirectory.xlsx')    #To open the workbook
+
+#----------------------------------Sheet-1---------------------------------------------------------#
+sheet=wb.get_sheet_by_name('Class-I')                #To open specific sheet by name in the workbook
+
+sheet.merge_cells('A1:E1')                           #To merge 1st 5 cells column-wise
+sheet['A1']="Student Details"
+sheet.merge_cells('F1:M1')                           #To merge next 8 cells column-wise
+sheet['F1']="Semester-1(2018)"
+sheet['A2']="Student ID"                             #Assigning head-names to the table cell by cell
+sheet['B2']="First Name"
+sheet['C2']="Last Name"
+sheet['D2']="Age"
+sheet['E2']="Address"
+sheet['F2']="English"
+sheet['G2']="Maths"
+sheet['H2']="Science"
+sheet['I2']="S.S"
+sheet['J2']="Hindi"
+sheet['K2']="Marathi"
+sheet['L2']="Sanskrit"
+sheet['M2']="Computer"
+
+#Can use anyone of the below case to append the data
+#Case1:
+rows=((1001,'Jisha','Daniel',10,'Dombivili',23,42,50,49,49,25,26,35),
+      (1002,'Jiya','Daniel',10,'Thane',15,26,32,35,45,49,50,49),
+      (1003,'Amit','Chauhan',10,'Borivili',23,50,13,19,20,24,27,29),
+      (1004,'Shreya','Joglekar',11,'Mulund',50,50,48,45,40,41,46,48),
+      (1005,'Daniel','Thomas',10,'Kerala',9,3,5,9,4,7,10,12),
+      (1006,'Suchita','Singh',11,'Badlapur',14,19,20,21,28,35,39,36),
+      (1007,'Amey','Kumar',10,'Borivili',32,39,30,20,22,24,41,40),
+      (1008,'Jaimin','Chawat',10,'Thane',33,26,28,16,19,20,19,46),
+      (1009,'Vrushali','Shishupal',12,'Vithalwadi',3,2,8,1,3,2,9,4),
+      (1010,'Anup','Nair',11,'Thane',30,22,21,20,15,19,19,45))
+
+for row in rows:
+    sheet.append(row)
+
+#Case2:
+#dict1={'A':1001,'B':'Jisha','C':'Daniel','D':24,'E':'Dombivili'}
+#dict2={'A':1002,'B':'Jiya','C':'Daniel','D':12,'E':'Thane'}
+#dict3={'A':1003,'B':'Amit','C':'Chauhan','D':29,'E':'Borivili'}
+#dict4={'A':1004,'B':'Shreya','C':'Joglekar','D':25,'E':'Mulund'}
+    
+#for row in range(1,2):
+ #   for cols in range(1,2):
+  #      sheet.append(dict1)
+   #     sheet.append(dict2)
+    #    sheet.append(dict3)
+        
+    
+for cols in sheet.iter_cols(min_col=1, max_col=5, min_row=None, max_row=None): #cell of all data from 1st-5th column 
+    for cell in cols:                                                         
+        cell.fill=PatternFill(fgColor='FFC7CE', fill_type="solid")      #formatting cell color
+        cell.border=Border(left=Side(style='thin'),right=Side(style='thin'),top=Side(style='thin'),bottom=Side(style='thin')) #Bordering all cells
+        cell.font=Font(italic=True)                                    #giving italic font to all cells
+        cell.alignment=Alignment(horizontal='center')                  #aligning text in center
+
+for cols in sheet.iter_cols(min_col=6, max_col=13, min_row=None, max_row=None): #cell of all data from 6th-13th column
+    for cell in cols:
+        cell.fill=PatternFill(fgColor='C0C0C0', fill_type="solid")
+        cell.border=Border(left=Side(style='thin'),right=Side(style='thin'),top=Side(style='thin'),bottom=Side(style='thin'))
+        cell.font=Font(italic=True)
+        cell.alignment=Alignment(horizontal='center')
+        
+for rows in sheet.iter_rows(min_row=1, max_row=2, min_col=1):    #cell of all data from row=1 to 2 and from column=1
+    for cell in rows:
+        cell.fill = PatternFill(fgColor='FFEE08', fill_type = "solid")
+        cell.border=Border(left=Side(style='thick'),right=Side(style='thick'),top=Side(style='thick'),bottom=Side(style='thick'))
+        cell.font=Font(bold=True)                               #giving bold font to all cells
+        cell.alignment=Alignment(horizontal='center')
+        
+
+#----------------------------------Sheet-2---------------------------------------------------------#
+
+sheet=wb.get_sheet_by_name('Class-II')
+
+sheet.merge_cells('A1:E1')
+sheet['A1']="Student Details"
+sheet.merge_cells('F1:M1')
+sheet['F1']="Semester-1(2018)"
+sheet['A2']="Student ID"
+sheet['B2']="First Name"
+sheet['C2']="Last Name"
+sheet['D2']="Age"
+sheet['E2']="Address"
+sheet['F2']="English"
+sheet['G2']="Maths"
+sheet['H2']="Science"
+sheet['I2']="S.S"
+sheet['J2']="Hindi"
+sheet['K2']="Marathi"
+sheet['L2']="Sanskrit"
+sheet['M2']="Computer"
+
+rows=((1001,'Akshay','Kumar',11,'Dombivili',36,42,50,49,49,25,26,35),
+      (1002,'Amir','Khan',12,'Thane',15,26,31,30,45,49,50,49),
+      (1003,'Amitabh','Bachan',11,'Borivili',23,50,13,19,23,24,27,29),
+      (1004,'Kareena','Kapoor',11,'Mulund',50,50,48,45,40,41,46,48),
+      (1005,'Katrina','Kaif',11,'Kerala',9,13,5,19,4,17,10,12),
+      (1006,'Salman','Khan',11,'Badlapur',34,10,20,29,28,35,39,36),
+      (1007,'Shahid','Kapoor',11,'Borivili',32,39,30,20,22,24,41,40),
+      (1008,'Deepika','Padukone',12,'Thane',33,22,28,16,20,20,19,46),
+      (1009,'Priyanka','Chopra',12,'Vithalwadi',31,22,28,41,33,12,39,45),
+      (1010,'Hrithik','Roshan',11,'Thane',30,20,21,20,16,19,20,43))
+
+for row in rows:
+    sheet.append(row)
+#   
+for cols in sheet.iter_cols(min_col=1, max_col=5, min_row=None, max_row=None):
+    for cell in cols:
+        cell.fill=PatternFill(fgColor='FFC7CE', fill_type="solid")
+        cell.border=Border(left=Side(style='thin'),right=Side(style='thin'),top=Side(style='thin'),bottom=Side(style='thin'))
+        cell.font=Font(italic=True)
+        cell.alignment=Alignment(horizontal='center')
+
+for cols in sheet.iter_cols(min_col=6, max_col=13, min_row=None, max_row=None):
+    for cell in cols:
+        cell.fill=PatternFill(fgColor='C0C0C0', fill_type="solid")
+        cell.border=Border(left=Side(style='thin'),right=Side(style='thin'),top=Side(style='thin'),bottom=Side(style='thin'))
+        cell.font=Font(italic=True)
+        cell.alignment=Alignment(horizontal='center')
+        
+for rows in sheet.iter_rows(min_row=1, max_row=2, min_col=1):
+    for cell in rows:
+        cell.fill = PatternFill(fgColor='FFEE08', fill_type = "solid")
+        cell.border=Border(left=Side(style='thick'),right=Side(style='thick'),top=Side(style='thick'),bottom=Side(style='thick'))
+        cell.font=Font(bold=True)
+        cell.alignment=Alignment(horizontal='center')
+
+#----------------------------------Sheet-3---------------------------------------------------------#
+
+sheet=wb.get_sheet_by_name('Class-III')
+
+sheet.merge_cells('A1:E1')
+sheet['A1']="Student Details"
+sheet.merge_cells('F1:M1')
+sheet['F1']="Semester-1(2018)"
+sheet['A2']="Student ID"
+sheet['B2']="First Name"
+sheet['C2']="Last Name"
+sheet['D2']="Age"
+sheet['E2']="Address"
+sheet['F2']="English"
+sheet['G2']="Maths"
+sheet['H2']="Science"
+sheet['I2']="S.S"
+sheet['J2']="Hindi"
+sheet['K2']="Marathi"
+sheet['L2']="Sanskrit"
+sheet['M2']="Computer"
+
+rows=((1001,'Akash','Mane',11,'Dombivili',36,42,20,49,49,25,26,35),
+      (1002,'Sudhir','Kadam',12,'Thane',20,23,31,30,45,49,26,49),
+      (1003,'Sumeet','Dhadve',11,'Borivili',23,50,15,19,29,24,37,29),
+      (1004,'Ronit','Kotnala',11,'Mulund',21,36,48,45,46,41,46,48),
+      (1005,'Prashant','Nair',11,'Kerala',19,13,25,19,34,27,10,12),
+      (1006,'Monica','Ayambara',11,'Badlapur',34,10,23,29,22,39,34,32),
+      (1007,'Aishwarya','Koli',11,'Borivili',32,39,31,20,22,24,41,40),
+      (1008,'Anjali','Kapoor',12,'Thane',33,22,28,16,21,20,19,46),
+      (1009,'Kiran','Dhagwal',12,'Vithalwadi',31,22,28,49,34,19,10,45),
+      (1010,'Sandeep','kadam',11,'Thane',30,21,29,21,19,17,27,49))
+
+for row in rows:
+    sheet.append(row)        
+    
+for cols in sheet.iter_cols(min_col=1, max_col=5, min_row=None, max_row=None):
+    for cell in cols:
+        cell.fill=PatternFill(fgColor='FFC7CE', fill_type="solid")
+        cell.border=Border(left=Side(style='thin'),right=Side(style='thin'),top=Side(style='thin'),bottom=Side(style='thin'))
+        cell.font=Font(italic=True)
+        cell.alignment=Alignment(horizontal='center')
+
+for cols in sheet.iter_cols(min_col=6, max_col=13, min_row=None, max_row=None):
+    for cell in cols:
+        cell.fill=PatternFill(fgColor='C0C0C0', fill_type="solid")
+        cell.border=Border(left=Side(style='thin'),right=Side(style='thin'),top=Side(style='thin'),bottom=Side(style='thin'))
+        cell.font=Font(italic=True)
+        cell.alignment=Alignment(horizontal='center')
+        
+for rows in sheet.iter_rows(min_row=1, max_row=2, min_col=1):
+    for cell in rows:
+        cell.fill = PatternFill(fgColor='FFEE08', fill_type = "solid")
+        cell.border=Border(left=Side(style='thick'),right=Side(style='thick'),top=Side(style='thick'),bottom=Side(style='thick'))
+        cell.font=Font(bold=True)
+        cell.alignment=Alignment(horizontal='center')
+
+wb.save('SchoolDirectory.xlsx')
