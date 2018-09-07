@@ -5,4 +5,6 @@ The program is divided into two parts
 1. Create Workbook and sheets- Creates a workbook with three sheets named in it.
 2.Writting and formatting sheets- Used the created sheet to insert all datas in side the cell by formaating all entered cell.
 
-This program is developed in jupyter notebook using python
+This program is developed in jupyter notebook.
+Programming language used:- Python, 
+Version of Python:3.6.
